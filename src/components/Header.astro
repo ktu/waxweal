@@ -1,0 +1,35 @@
+<div id="top">
+    <div id="nav">
+        <div>WORKS</div>
+        <div>SERVICES</div>
+        <div><a href="/about">ABOUT</a></div>
+        <div>CONTACT</div>
+    </div>
+</div>
+<style>
+
+    #top {
+        position: fixed;
+        z-index: 3;
+        top: 0px;
+        width: calc(100% - 200px);
+        margin-left: 200px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-items: end;
+        padding: 10px 50px 10px 20%;
+    }
+
+    #nav > div {
+        color: white;
+        font-family: "Spectral SC", serif;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+</style>

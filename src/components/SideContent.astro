@@ -1,0 +1,99 @@
+<div id="side-content">
+    <div class="title-div">
+        <h1 class="fancy">Waxweal</h1>
+        <div class="title">by <div class="fancy">Runa Liore Winters</div></div>
+            <div class="role">
+            Writing, Game Design, <br /> 
+            & Project Management <br />
+            </div>
+        </div>
+    </div>
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&display=swap');
+
+    #side-content {
+        display: flex;
+        position: static;
+        width: 75%;
+        z-index: 2;  
+        height: calc(100% - 200px);
+        align-items: center;
+    }
+
+    .fancy {
+        font-family: "Charmonman", cursive;
+        font-weight: 700;
+        color: white;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 100px;
+    }
+
+    .title-div {
+		z-index: 0;
+		height: 600px;
+        width: 100%;
+	}
+	
+	.title {
+		font-size: 28px;
+		color: rgba(255, 255, 255, 0.6);
+		font-family: 'Red Hat Display', sans-serif;
+		font-weight: 400;
+		text-align: center;
+        justify-content: center;
+        margin: auto;
+		letter-spacing: 1px;
+        z-index: 2;
+        text-transform: uppercase;
+        margin-top: -120px;
+	}
+
+    .title .fancy {
+        margin-top: -55px;
+        display: inline;
+    }
+    
+
+    .role {
+        margin: auto;
+        margin-top: 70px;
+        text-align: center;
+        font-size: 30px;
+		color: rgba(255, 255, 255, 0.6);
+        font-family: 'Red Hat Display', sans-serif;
+    }
+
+                #wax-seal {
+                margin: auto;
+                display: inline;
+                z-index: 2;
+            }
+            #bottom {
+                display: inline;
+                height: 300px;
+                width: 200px;
+                z-index: 1;
+                transform: rotate(90deg);
+                position: absolute;
+                left: calc(50% - 100px);
+                top: 40%;
+            }
+            .brand-logo {
+                width: calc(100% + 100px);
+                display: grid;
+                grid-template-columns:40% 60%;
+                justify-content: end;
+                align-items: center; 
+                height: 100vh;
+                background-attachment: scroll;
+                /* background: linear-gradient(130deg,rgba(54, 14, 70, 1) 0%, rgba(0, 0, 0, 1) 50%); */
+                background: black;
+            }
+
+
+</style>
