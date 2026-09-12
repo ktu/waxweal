@@ -2,23 +2,25 @@
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro';
 import Side from '../components/Side.astro';
-import SideContent from '../components/SideContent.astro';
+import SideTitle from '../components/SideTitle.astro';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:name="root" transition:animate="fade">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<title>Waxweal by Runa Liore Winters</title>
+		<ClientRouter />
 	</head>
 	<body>
 		<Header />
 		<Side />
 		<div class="base">
-			<SideContent />
+			<SideTitle />
 			<slot />
 		</div>
 		<Footer />
@@ -35,19 +37,22 @@ import SideContent from '../components/SideContent.astro';
 
 	.base {
 		height: 100%;
-        background: linear-gradient(130deg,rgba(54, 14, 70, 1) 0%, rgba(0, 0, 0, 1) 50%); 
 		color: white;
         display: grid;
         grid-template-columns:40% 60%;
-        align-items: start;        
         color: white;
         width: 100%;
         padding: 100px;
         padding-top: 100px;
         padding-left: 0px;
-		background: #360e46; 
-		background: linear-gradient(180deg, #360e46 0%, rgba(0, 0, 0, 1) 100%);
+		background: black; 
+		background: linear-gradient(10deg, #360e46 0%,  rgba(0, 0, 0, 1) 50%);
 
+        @media screen and (max-width: 1400px) {
+          grid-template-columns: 100%;
+		  padding-top: 0px;
+		  align-content: start;
+        }
     }
 
     .title {
@@ -57,6 +62,10 @@ import SideContent from '../components/SideContent.astro';
     }
 
     .base > div {
-        width: 90%
+        width: 90%;
+
+		@media screen and (max-width: 1400px) {
+          width: 100%;
+        }
     }
 </style>

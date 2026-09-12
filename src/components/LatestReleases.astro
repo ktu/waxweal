@@ -35,7 +35,11 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
 
 <style>
     .logo {
-        max-width: 90%
+        max-width: 90%;
+        @media screen and (max-width: 1400px) {
+          border-top: white dotted 2px;
+          padding-top: 50px;
+        }
     }
 
     .thumbnail {
@@ -73,7 +77,6 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
     }
 
     .content {
-        /* justify-self: start; */
         font-family: "Atkinson Hyperlegible Next", sans-serif;
         font-size: 15px;
         font-weight: 400;
@@ -98,11 +101,19 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
         padding-top: 0px;
 		background: #360e46; 
 		background: linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, #360e46 100%);
+        @media screen and (max-width: 1400px) {
+           grid-template-columns: 100%;
+        }
     }
 
     .title {
         font-size: 40px;
         z-index: 3;
+
+        @media screen and (max-width: 1400px) {
+           position: relative;
+           margin-left: -50px;
+        }
     }
 
     #latest > div {
