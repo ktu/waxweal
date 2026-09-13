@@ -38,10 +38,13 @@ import SideTitle from './SideTitle.astro';
         margin: auto;
         display: inline;
         z-index: 2;
+        animation: spin 1s ease-in-out forwards;
         @media screen and (max-width: 1400px) {
             display: none;
         }
     }
+
+
     #bottom {
         display: inline;
         height: 300px;
@@ -49,16 +52,31 @@ import SideTitle from './SideTitle.astro';
         z-index: 1;
         transform: rotate(90deg);
         position: absolute;
-        /* right: calc(60% - 300px); */
         margin-left: -250px;
-        margin-top: 150px;
         align-self: center;
         justify-self: center;
+        animation: fade-in 3s ease-in forwards;
+
 
         @media screen and (max-width: 1400px) {
             display: none;
         }
+
+        @supports (-moz-appearance:none) {
+         margin-top: 150px;
+        }
     }
+
+
+    @keyframes spin {
+        from { transform: none; }
+        to { transform: rotate(90deg)}
+    }
+    @keyframes fade-in {
+        from { opacity: 0; margin-left: -200px; }
+        to { opacity: 1; margin-left: -250px; }
+    }
+
 
     .brand-logo {
         width: calc(110% + 120px);

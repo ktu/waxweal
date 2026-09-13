@@ -7,18 +7,22 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
         <div class="content">{posts.map((post: any, index) => {
             if (index == 0) {
                 return (
-                <div class="post-inner">
-                    <img src={post.frontmatter.logo} class="logo" />
+                <div class="post-inner slide-left">
+                    <img src={post.frontmatter.logo} class="logo" loading="lazy" />
                     <h1>{post.frontmatter.title}</h1>
                     <div>{post.frontmatter.subtitle}</div>
                     <h2>{post.frontmatter.role}</h2>
                     <Fragment set:html={post.compiledContent()} />
-                    </div>
+                </div>
                 )
             } else {
+                const isEven = index % 2 == 0;
                 return (
-                    <div class="post-outer">
-                    <img src={post.frontmatter.logo} class="thumbnail" />
+                    <div class={"post-outer " + (isEven ? "slide-left" : "slide-right")}>
+                    <img src={post.frontmatter.logo} 
+                        class="thumbnail" 
+                        loading="lazy" 
+                    />
                     <div class="post-inner">
                         <h1>{post.frontmatter.title}</h1>
                         <div>{post.frontmatter.subtitle}</div>
@@ -34,12 +38,36 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
 </section>
 
 <style>
+    @keyframes slide-fade-in-left {
+        from { opacity: 0; margin-left: 200px; }
+        to { opacity: 1; margin-left: 0px; }
+    }
+
+    @keyframes slide-fade-in-right {
+        from { opacity: 0; margin-right: 200px; }
+        to { opacity: 1; margin-right: 0px; }
+    }
+
+    .slide-left {
+        opacity: 1;
+        animation: slide-fade-in-left 2s ease;
+        animation-timeline: scroll()
+    }
+
+    .slide-right {
+        opacity: 1;
+        animation: slide-fade-in-right 2s ease;
+        animation-timeline: scroll()
+    }
+
     .logo {
         max-width: 90%;
+
         @media screen and (max-width: 1400px) {
           border-top: white dotted 2px;
           padding-top: 50px;
         }
+
     }
 
     .thumbnail {
@@ -56,10 +84,7 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
         flex-direction: row;
     }
 
-    .post-inner {
-        margin: 0px 20px 50px 0px;
-        vertical-align: top;
-    }
+
 
     h1 {
         text-transform: uppercase;
@@ -114,6 +139,12 @@ const posts = Object.values(import.meta.glob("../text/LatestReleases/*.md", { ea
            position: relative;
            margin-left: -50px;
         }
+
+    }
+
+    .post-inner {
+        margin: 0px 20px 50px 0px;
+        vertical-align: top;
     }
 
     #latest > div {

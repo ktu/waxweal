@@ -4,9 +4,10 @@ const posts = Object.values(import.meta.glob("../text/Announcements/*.md", { eag
 
 <section id="announcements">
         <div class="title">ANNOUNCEMENTS</div>
-        <div class="content">{posts.map((post: any) => {
+        <div class="content">{posts.map((post: any, index) => {
+                const isEven = index % 2 == 0;
                 return (
-                    <div class="post-outer">
+                    <div class={"post-outer " + (isEven ? "slide-left" : "slide-right")}>
                     <h1>{post.frontmatter.date}</h1>
                     <div class="post-inner">
                         <h2>{post.frontmatter.title}</h2>
@@ -22,6 +23,26 @@ const posts = Object.values(import.meta.glob("../text/Announcements/*.md", { eag
 </section>
 
 <style>
+        @keyframes slide-fade-in-left {
+        from { opacity: 0; margin-left: 200px; }
+        to { opacity: 1; margin-left: 0px; }
+    }
+
+    @keyframes slide-fade-in-right {
+        from { opacity: 0; margin-right: 200px; }
+        to { opacity: 1; margin-right: 0px; }
+    }
+
+    .slide-left {
+        opacity: 1;
+        animation: slide-fade-in-left 2s ease;
+    }
+
+    .slide-right {
+        opacity: 1;
+        animation: slide-fade-in-right 2s ease;
+    }
+
     .post-image {
         width: 50%;
     }
@@ -31,6 +52,9 @@ const posts = Object.values(import.meta.glob("../text/Announcements/*.md", { eag
         margin-right: 10%;
         display: flex;
         flex-direction: row;
+
+        opacity: 1;
+        animation: slide-fade-in-left 2s ease;
     }
 
     .post-inner {
